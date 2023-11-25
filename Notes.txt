@@ -1,0 +1,76 @@
+wget <kafka link>
+tar -xzvf <file_name>
+bin/server.properties edit ===> advertised.listeners=PLAINTEXT://localhost:9092
+
+                        *IMP*
+bin/zookeeper-server-start.sh config/zookeeper.properties
+                        *IMP*
+JMX_PORT=8004 bin/kafka-server-start.sh config/server.properties 
+
+**kafka Manager**
+
+git clone https://github.com/yahoo/CMAK.git
+cd CMAK
+
+<FIRST TIME>: brew install sbt
+// Still not working: export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+sbt clean dist 
+
+cd target/universal/
+unzip cmak-3.0.0.7.zip 
+
+**change CMAK.zkhost with zookeeper host id**
+cd cmak-3.0.0.7/conf
+nano application.conf
+cmak.zkhosts="kafka-manager-zookeeper:2181" (change to localhost)
+
+cd ..
+path: cd target/universal/cmak-3.0.0.7
+                        *IMP*
+bin/cmak -Dconfig.file=conf/application.conf -Dhttp.port=8080
+or [ignore errors]
+bin/cmak -Dconfig.file=conf/application.conf -Dhttp.port=8080 -J--add-opens=java.base/sun.net.www.protocol.file=ALL-UNNAMED -J--add-exports=java.base/sun.net.www.protocol.file=ALL-UNNAMED
+
+
+
+Python kafka
+
+Config need by producers to publish message
+    Bootstrap server:
+        server address: IP[localhost]:PORT[default 9092]
+        topic_name
+        value_serializer
+
+    send method on producers to publish the data
+
+Single broker 1 partition
+                            __________
+    publisher-------------->|  |p0|  |--------->> consumers
+                            __________ topic
+
+    pip3 install kafka-python
+    pip3 install Faker
+
+While Publishing
+    When multiple partitions within topic --> random distributions
+
+
+
+Config need to consumer [Mandatroy for consumer to stay in a group]
+    topic
+    bootstrap_servers
+    group_id
+Consumer: 
+    consume message from kafka topic partition
+    every consumer has a consumer group
+
+    
+
+
+bin/zookeeper-server-start.sh config/zookeeper.properties
+
+JMX_PORT=8004 bin/kafka-server-start.sh config/server.properties
+
+bin/cmak -Dconfig.file=conf/application.conf -Dhttp.port=8080 -J--add-opens=java.base/sun.net.www.protocol.file=ALL-UNNAMED -J--add-exports=java.base/sun.net.www.protocol.file=ALL-UNNAMED
+
+
