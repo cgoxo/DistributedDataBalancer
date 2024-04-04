@@ -20,4 +20,4 @@ This project is a distributed system that enables low storage devices to train i
 - Distributed Systems
 
 ## Architecture
-The system consists of three consumer nodes with one kafka broker and one head node. The consumer nodes read images from the local device and send them to the Kafka broker, which distributes the images to the head node for training.
+The system consists of three consumer nodes with one kafka broker and one head node. The consumer nodes read images from the local device and send them to the Kafka broker based on the read write speeds in the consumer nodes, which distributes the images to the head node for training.
