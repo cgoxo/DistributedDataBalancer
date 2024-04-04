@@ -6,6 +6,7 @@ This project is a distributed system that enables low storage devices to train i
 ## Installation
 - Clone the repository
 - Install dependencies using `pip3 install kafka-python`
+- Download and setup kafka locally and use RedPanda to create consumer groups
 
 ## Usage
 - Run the consumer nodes using `python consumer.py`
