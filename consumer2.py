@@ -5,7 +5,7 @@ import sys
 import base64
 import os
 
-bootstrap_server = '10.70.33.117:9092'
+bootstrap_server = '{provide kafka broker address and port number}'
 
 # Define the partition numbers you want to consume from
 partition_numbers = [0,1]  # Change Plzz. [0,1] [1,2] [2,3]
