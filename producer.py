@@ -53,8 +53,8 @@ def publish_images_in_folder(broker, topic1, topic2, folder_path):
                 print(resp)
 
 if __name__ == "__main__":
-    broker = '10.70.33.117:9092'
-    topic1 = 'topic_1'
-    topic2 = 'topic_2'
-    folder_path = 'C:/Users/Sreenath/Desktop/BITS/sem3/DSTN/Testing'
+    broker = 'IP of kafka broker'
+    topic1 = '{provide topic1 name}'
+    topic2 = '{provide topic2 name}'
+    folder_path = 'path/to/data'
     publish_images_in_folder(broker, topic1, topic2, folder_path)
